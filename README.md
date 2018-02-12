@@ -1,5 +1,11 @@
 # shop-search
 
-## コントリビュートの仕方
+## 概要
 
-TODO:Gitの使い方とか
+プリパラの店舗をいい感じに検索するやつです．
+
+## 開発方法
+
+以下にまとめました
+
+https://github.com/prickathon/shop-search/blob/master/CONTRIBUTING.md
