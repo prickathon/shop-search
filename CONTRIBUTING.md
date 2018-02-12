@@ -71,5 +71,8 @@ http://proengineer.internous.co.jp/content/columnfeature/6893
 以下のURLに自分のコミットがあれば大丈夫です．
 https://github.com/prickathon/shop-search/commits/master
 
+また，下記ページの内容も10秒程度で変更されるはずです．
+https://prickathon.github.io/shop-search/
+
 以上です．
 また作業をする場合は，`git pull`の章まで戻ってやってみてください！
