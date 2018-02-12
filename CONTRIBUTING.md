@@ -1,8 +1,11 @@
 # shop-search開発の心得
 
+ここの内容ですが，なるべく簡潔に書きたかったので，正直かなり省略しています．
+わからないことがあれば @takanakahiko まで相談してください．
+
 ## 開発の準備
 
-そのPCで作業を開始するための準備です．
+手元のPCで作業を開始するための準備です．
 
 この作業は最初だけで大丈夫です．
 
@@ -61,3 +64,12 @@ http://proengineer.internous.co.jp/content/columnfeature/6893
 変更内容をGtiHubに送信します
 
 例:`git push`
+
+### 確認をする
+
+無事に作業が登録できたか確認します．
+以下のURLに自分のコミットがあれば大丈夫です．
+https://github.com/prickathon/shop-search/commits/master
+
+以上です．
+また作業をする場合は，`git pull`の章まで戻ってやってみてください！
