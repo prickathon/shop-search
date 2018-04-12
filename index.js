@@ -28,11 +28,12 @@ function receiveJson(json){
             gachatext = "ガチャがおいてあるよ！"
         }
         
-        var html = '<div style="border: dashed 2px grey;margin:10px">';
-        html += '<p class="shopName">' + json.response[i].name +'</p>';
-        html += '<p class="shopAdress">' + json.response[i].address +'</p>';
-        html += '<p class="hasGacha">' + gachatext +'</p>';
+        var html = '<div class="card-panel pink lighten-2">';
+        html += '<p class="white-text shopName">' + json.response[i].name +'</p>';
+        html += '<p class="white-text shopAdress">' + json.response[i].address +'</p>';
+        html += '<p class="white-text hasGacha">' + gachatext +'</p>';
         html += '</div>';
+
         output += html;
     }    
     
