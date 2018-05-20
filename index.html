@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>プリチャンショップサーチ</title>
+    <title>プリチャンおみせサーチ</title>
     <meta name="Description" content="" />
     <meta name="Keywords" content="" />
 
@@ -34,7 +34,7 @@
 
     <div class="row">
         <div class="input-field col s12">
-            <input type="text" value="" id="textinput" class="validate">
+            <input type="text" value="" id="search-query" class="validate">
             <label class="active">あなたのじゅうしょをいれてね！</label>
         </div>
     </div>
@@ -43,7 +43,7 @@
     <div class="row">
         <div class="col s12">
             <label>
-                <button class="waves-effect waves-light btn" onclick="hoge()">
+                <button class="waves-effect waves-light btn" onclick="search_shop()">
                     <span class="white-text">さがす</span>
                 </button>
             </label>
@@ -53,10 +53,10 @@
     <form action="cgi-bin/abc.cgi" method="post" />
     <div class="row">
         <div class="col s12">
-            <span id='helloWorld'></span>
+            <span id='search-result'></span>
         </div>
     </div>
-    <script type="text/javascript" src="index.js"></script>
+    <script type="text/javascript" src="main.js"></script>
 </body>
 
 </html>
