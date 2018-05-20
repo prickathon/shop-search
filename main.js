@@ -1,5 +1,10 @@
 // forked from dairoza's "2018-02-11 1st" http://jsdo.it/dairoza/SrI8
 
+// https://gist.github.com/naheedakhtar/3259979
+var getParameterByName = function(name) {
+    var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
+    return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+}
 
 const CharaData = {
     0: {
@@ -35,18 +40,36 @@ const CharaData = {
     },
     */
 }
-var current_color = -1;
+var current_color = 0;
 
 window.onload = () => {
-    current_color = Math.floor(Math.random() * Object.keys(CharaData).length);
+    // color指定あれば使うし、そうでなければランダム
+    var color_param = getParameterByName('color_set');
+    if (color_param) {
+        // 雑な不整値対策
+        current_color = Math.abs(color_param) % 5;
+    } else {
+        current_color = Math.floor(Math.random() * Object.keys(CharaData).length);
+    }
+
+    // キャラごとに色を変える
+    // FIXME: 追加ロジックがイケてない
     var chara_name = CharaData[current_color]['chara_name'];
     document.getElementById('title-color').innerHTML = `${chara_name}ちゃんにあえる場所`;
     document.getElementById('title-color').style.color = CharaData[current_color]['title_color'];
+    for(var elem of CharaData[current_color]['panel_color'].split(' ')) {
+        document.getElementById('search-button').classList.add(elem);
+    }
+}
+
+function get_color_inner_text(text) {
+    var c = CharaData[current_color]['title_color'];
+    return `<font color=${c}>${text}</font>`;
 }
 
 //ボタンが押されたら呼ばれる処理
 function search_shop() {
-    document.getElementById('search-result').innerHTML = "システム接続中でーす!";
+    document.getElementById('search-result').innerHTML = get_color_inner_text("システム接続中でーす!");
     var text = document.getElementById('search-query').value;
     request(text);
 }
@@ -63,6 +86,7 @@ function request(text) {
 function receiveJson(json) {
     var output = "";
 
+    // キャラごとに色を変える
     current_panel_color = CharaData[current_color]['panel_color']
     for (var i = 0; i < json.response.length; i++) {
         // 神ガチャはもう無いんだ…
@@ -75,7 +99,8 @@ function receiveJson(json) {
     }
 
     if (output === "") {
-        output = '<p>このあたりにプリチャンはないよー…</p>';
+        var text = get_color_inner_text('このあたりにプリチャンはないよー…');
+        output = `<p>${text}</p>`;
     }
     document.getElementById('search-result').innerHTML = output;
 }
