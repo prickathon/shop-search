@@ -3,19 +3,19 @@
 function hoge(){
     document.getElementById('helloWorld').innerHTML ="システム接続中でーす!";
     var text = document.getElementById('textinput').value;
-    var gachaFilter = document.getElementById('gachaFilter').checked;
-    request(text,gachaFilter);
+    request(text);
 }
 
 //WebAPIにアクセス
-function request(text,gachaFilter){
+function request(text){
     var script = document.createElement('script');
-    var baseurl = "https://script.google.com/macros/s/AKfycbwoTfLoZJEktYH_RQq0BNStXFHCKhRi9rC1Sb16xsc2LGbepTU/exec";
-    script.src = baseurl + "?callback=receiveJson&keyword=" + encodeURI(text) + "&gachaFilter=" + encodeURI(gachaFilter);
+    var baseurl = "https://script.google.com/macros/s/AKfycbyJRiaMbBD8dbmDxfUOLVXYQi98Pa0cfcLXnX1D/exec";
+    script.src = baseurl + "?callback=receiveJson&keyword=" + encodeURI(text);
     document.body.appendChild(script);
 }
 
-//WebAPIで取得した情報を受け取って処理す
+// WebAPIで取得した情報を受け取って処理し
+// FIXME:なんかもうちょっと上手く表示したいぷりね…
 function receiveJson(json){
 
     var output = "";
