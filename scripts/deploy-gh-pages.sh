@@ -39,7 +39,7 @@ fi
 
 # copy over or recompile the new site
 cp -a ${siteSource}/* /tmp
-cp -a /tmp/* .
+cp -a /tmp/dist/* .
 
 # stage any changes and new files
 git add -A
