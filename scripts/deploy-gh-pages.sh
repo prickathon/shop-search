@@ -27,7 +27,7 @@ git init
 git remote add --fetch origin "$remote"
 
 # switch into the the gh-pages branch
-if git rev-parse --verify origin/gh-pages-branch > /dev/null 2>&1
+if git rev-parse --verify origin/gh-pages > /dev/null 2>&1
 then
     git checkout gh-pages
     # delete any old site as we are going to replace it
