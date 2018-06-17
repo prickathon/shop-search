@@ -4,9 +4,9 @@
   "description": "~~プリパラ~~ プリチャンの店舗をいい感じに検索するやつです．",
   "main": "main.js",
   "scripts": {
-    "build": "parcel build src/index.html",
-    "build:watch": "parcel watch src/index.html",
-    "serve": "parcel src/index.html"
+    "build": "parcel build src/index.html --public-url /shop-search",
+    "build:watch": "parcel watch src/index.html --public-url /shop-search",
+    "serve": "parcel src/index.html --public-url /shop-search"
   },
   "repository": {
     "type": "git",

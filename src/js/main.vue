@@ -91,8 +91,8 @@ export default {
     }),
     methods:{
         getShops(){
-            let baseurl = "https://script.google.com/macros/s/AKfycbyJRiaMbBD8dbmDxfUOLVXYQi98Pa0cfcLXnX1D/exec";            
-            axios.get(baseurl + "?keyword=" + encodeURI(this.search_word)).then(json=>{this.shops=json.data.response});
+            const baseurl = "https://script.google.com/macros/s/AKfycbyJRiaMbBD8dbmDxfUOLVXYQi98Pa0cfcLXnX1D/exec";
+            axios.get(baseurl + "?keyword=" + encodeURI(this.search_word)).then(resp=>{this.shops=resp.data.response});
         },
         // https://gist.github.com/naheedakhtar/3259979
         getParameterByName(name) {
