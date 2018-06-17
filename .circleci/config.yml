@@ -48,4 +48,4 @@ workflows:
             - build
           filters:
             branches:
-              only: gh-pages
+              only: master
