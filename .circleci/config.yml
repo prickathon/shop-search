@@ -36,7 +36,7 @@ jobs:
           at: .
       - run:
           name: Deploy to master
-          command: ./scripts/deploy-master.sh ~/workspace
+          command: ./scripts/deploy-gh-pages.sh ~/workspace
 
 workflows:
   version: 2
