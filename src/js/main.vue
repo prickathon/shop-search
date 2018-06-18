@@ -111,12 +111,12 @@ export default {
             return CharaData[this.theme]['chara_name']
         }
     },
-    onCreated(){
-        var color_param = getParameterByName('color_set');
+    created:function(){
+        var color_param = this.getParameterByName('color_set');
         if (color_param) {
-            this.theme = Math.abs(color_param) % 5;
+            this.$data.theme = Math.abs(color_param) % 5;
         } else {
-            this.theme = Math.floor(Math.random() * Object.keys(CharaData).length);
+            this.$data.theme = Math.floor(Math.random() * Object.keys(CharaData).length);
         }
     }
 }
