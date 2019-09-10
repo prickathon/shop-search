@@ -14,7 +14,7 @@
     <div class="row">
         <div class="input-field col s12 m12">
             <input type="text" v-model="search_word" id="search-query" class="validate">
-            <label class="active">あなたのじゅうしょをいれてね！</label>
+            <label class="active">キーワードをいれてね！</label>
         </div>
     </div>
 
@@ -29,15 +29,14 @@
         </div>
     </div>
 
-    <form action="cgi-bin/abc.cgi" method="post" />
     <div class="row">
         <div class="col s12">
             <span id='search-result'>
-                <div v-for="shop in shops" :key="shop['.key']" :class="'card-panel ' + panel_color">
-                    <p class="white-text shopName">{{shop.name}}</p>
-                    <p class="white-text shopAdress">{{shop.address}}</p>
+                <div v-for="shop in shops" :key="shop.shop.value" :class="'card-panel ' + panel_color">
+                    <p class="white-text shopName">{{shop.name.value}}</p>
+                    <p class="white-text shopAdress">{{shop.address.value}}</p>
                 </div>
-                <span v-if="shops.length==0 && search_word"><font :color="title_color">このあたりにプリチャンはないよー…</font></span>
+                <span v-if="shops.length==0 && pushed"><font :color="title_color">このあたりにプリチャンはないよー…</font></span>
             </span>
         </div>
     </div>
@@ -87,12 +86,30 @@ export default {
     data:()=>({
         shops:[],
         search_word:"", 
-        theme:0
+        theme:0,
+        pushed: false
     }),
     methods:{
-        getShops(){
-            const baseurl = "https://script.google.com/macros/s/AKfycbyJRiaMbBD8dbmDxfUOLVXYQi98Pa0cfcLXnX1D/exec";
-            axios.get(baseurl + "?keyword=" + encodeURI(this.search_word)).then(resp=>{this.shops=resp.data.response});
+        async getShops(){
+            this.pushed = true
+            const query = `
+            PREFIX prism: <https://prismdb.takanakahiko.me/prism-schema.ttl#>
+            SELECT ?shop ?name ?address
+            WHERE {
+                ?shop a prism:Shop;
+                    prism:name ?name;
+                    prism:address ?address.
+                filter (contains(?address,"${this.search_word}") || contains(?name,"${this.search_word}") )
+            }`
+            try {
+                const response = await axios.get('https://prismdb.takanakahiko.me/sparql', {
+                    params: { query, format: 'application/sparql-results+json' },
+                    headers: { 'Content-Type': 'application/sparql-query+json' }
+                })
+                this.shops = response.data.results.bindings
+            } catch (e) {
+                console.log(e)
+            }
         },
         // https://gist.github.com/naheedakhtar/3259979
         getParameterByName(name) {
