@@ -9,7 +9,7 @@
 - `git remote add upstream git@github.com:prickathon/shop-search.git`
 - `git checkout -b <作業内容がわかるブランチ名>`
 - `git commit -am '<コミットメッセージ>'`
-- `git push origin`
+- `git push origin <作業内容がわかるブランチ名>`
 - PR を作成する
 
 ## 二回目以降の人
@@ -19,5 +19,5 @@
 - `git merge upstream/master`
 - `git checkout -b <作業内容がわかるブランチ名>`
 - `git commit -am '<コミットメッセージ>'`
-- `git push origin`
+- `git push origin <作業内容がわかるブランチ名>`
 - PR を作成する
