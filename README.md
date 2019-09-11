@@ -12,6 +12,20 @@ https://prickathon.github.io/shop-search/
 
 ## 開発方法
 
-以下にまとめました！
+気軽に @takanakahiko までご相談ください
+
+- あらかじめ node/npm をインストールしてください
+- 最新の Google Chrome を用意してください
+
+```bash
+# 必要なパッケージのインストール
+$ npm i
+
+# 開発サーバを起動(起動したら http://localhost:1234 をブラウザで開き確認できます)
+# (Ctrl + c で中止できます)
+$ npm run serve
+```
+
+## コントリビューション
 
 https://github.com/prickathon/shop-search/blob/master/CONTRIBUTING.md
