@@ -14,7 +14,7 @@
     <div class="row">
         <div class="input-field col s12 m12">
             <input type="text" v-model="search_word" id="search-query" class="validate">
-            <label class="active">キーワードをいれてね！</label>
+            <label class="active" for="search-query">キーワードをいれてね！</label>
         </div>
     </div>
 
