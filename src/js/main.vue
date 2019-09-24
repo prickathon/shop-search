@@ -35,6 +35,7 @@
                 <div v-for="shop in shops" :key="shop.shop.value" :class="'card-panel ' + panel_color">
                     <p class="white-text shopName">{{shop.name.value}}</p>
                     <p class="white-text shopAdress">{{shop.address.value}}</p>
+                    <a :href="`http://maps.google.com/maps?q=${shop.name.value}`" target="_blank" rel="noopener noreferrer" class="btn">GoogleMap で開く</a>
                 </div>
                 <span v-if="shops.length==0 && pushed"><font :color="title_color">このあたりにプリチャンはないよー…</font></span>
             </span>
