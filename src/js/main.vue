@@ -12,21 +12,19 @@
     </div>
 
     <div class="row">
-        <div class="input-field col s12 m12">
-            <input type="text" v-model="search_word" id="search-query" class="validate">
-            <label class="active" for="search-query">キーワードをいれてね！</label>
-        </div>
-    </div>
-
-    <!--神ガチャはもういないんだ・・・ -->
-    <div class="row">
-        <div class="col s12 m12">
-            <label>
-                <button :class="'waves-effect waves-light btn '+ panel_color" id="search-button" v-on:click="getShops()">
-                    <span class="white-text">さがす</span>
-                </button>
-            </label>
-        </div>
+        <form @submit.prevent="getShops">
+            <div class="input-field col s12 m12">
+                <input type="text" v-model="search_word" id="search-query" class="validate">
+                <label class="active" for="search-query">キーワードをいれてね！(例:「秋葉原」)</label>
+            </div>
+            <div class="col s12 m12">
+                <label>
+                    <button type="submit" :class="'waves-effect waves-light btn '+ panel_color" id="search-button">
+                        <span class="white-text">さがす</span>
+                    </button>
+                </label>
+            </div>
+        </form>
     </div>
 
     <div class="row">
